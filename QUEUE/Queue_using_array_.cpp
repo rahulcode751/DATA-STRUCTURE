@@ -1,4 +1,5 @@
 /// Queue using array
+/// queue using array without using inbuilt functions
 #include<iostream>
 using namespace std;
 
