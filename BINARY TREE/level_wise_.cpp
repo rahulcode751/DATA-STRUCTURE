@@ -1,7 +1,7 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-
+// level wise
 template<typename T>
 class BTNode{
 public:
