@@ -1,0 +1,22 @@
+int countLeafNode(BTNode<int>* root){
+    if(root==NULL){
+        return 0;
+    }
+    if(root->left==NULL && root->right==NULL){
+        return 1;
+    }
+
+    return countLeafNode(root->left) + countLeafNode(root->right);
+}
+
+void countLeafNodeOtherWay(BTNode<int>* root,int &ans){
+    if(root==NULL){
+        return;
+    }
+    if(root->left==NULL && root->right==NULL){
+        ans++;
+        ///return; optional
+    }
+    countLeafNodeOtherWay(root->left,ans);
+    countLeafNodeOtherWay(root->right,ans);
+}
