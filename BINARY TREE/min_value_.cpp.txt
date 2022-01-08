@@ -1,0 +1,18 @@
+int minValue(BTNode<int>* root){
+    if(root==NULL){
+        return INT_MAX;
+    }
+    int leftMin = minValue(root->left);
+    int rightMin = minValue(root->right);
+
+    return min(root->data, min(leftMin,rightMin));
+}
+
+void minValueOtherWay(BTNode<int>* root,int &ans){
+    if(root==NULL){
+        return;
+    }
+    ans = min(ans,root->data);
+    minValueOtherWay(root->left,ans);
+    minValueOtherWay(root->right,ans);
+}
