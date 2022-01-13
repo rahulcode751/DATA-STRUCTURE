@@ -5,15 +5,11 @@ bool helper(BTNode<int>* leftTree,BTNode<int>* rightTree){
 
         if(leftTree->data != rightTree->data) return false;
         else return true;
-
-
-        return helper(leftTree->left,rightTree->right) &&
-               helper(leftTree->right,rightTree->left);
+        
+        return helper(leftTree->left,rightTree->right) && helper(leftTree->right,rightTree->left);
 }
 
 bool isSymmetric(BTNode<int>* root) {
         if(root==NULL) return true;
-
         return helper(root->left,root->right);
-
 }
