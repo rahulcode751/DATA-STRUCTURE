@@ -1,0 +1,43 @@
+void reverselevelOrder(BTNode<int>* root) {
+        if(root==NULL){
+            return;
+        }
+        queue<BTNode<int>*> q;
+        q.push(root);
+        q.push(NULL);
+        stack<int> s;
+
+        while(!q.empty()){
+            BTNode<int>* f = q.front();
+            if(f == NULL){
+                s.push(-1);
+            }
+            else{
+            s.push(f->data);
+            }
+            q.pop();
+            if(f==NULL){
+                if(!q.empty()){
+                    q.push(NULL);
+                }
+
+            }else{
+                 if(f->right){
+                    q.push(f->right);
+                }
+
+                if(f->left){
+                    q.push(f->left);
+                }
+            }
+        }
+        while(!s.empty()){
+            if(s.top() == -1){
+                cout<<endl;
+            }
+            else{
+                cout<<s.top()<<" ";
+            }
+            s.pop();
+        }
+    }
