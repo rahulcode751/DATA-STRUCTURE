@@ -6,7 +6,7 @@ using namespace std;
 int main(){
     unordered_map<string, int>  mymap;
 
-    /// insert
+    //// insert
     pair<string,int> p("abc",1);
     mymap.insert(p);
 
