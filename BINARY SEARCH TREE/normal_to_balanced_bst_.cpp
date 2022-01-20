@@ -4,7 +4,7 @@
         v.push_back(root);
         tree_traversal(root->right,v);
     }
- Node* make_balanced_bst(Node*root,int s,int e,vector<Node*> &v){
+ Node* make_balanced_bst(int s,int e,vector<Node*> &v){
  if(s>e) return NULL;
  int mis = (s+e)/2;
  Node* root = v[i];
@@ -19,7 +19,7 @@
  tree_traversal(root,v)
  int i = 0;
  int e = v.size() - 1;
- root = make_balanced_bst(root,i,e,v);
+ root = make_balanced_bst(i,e,v);
  return root;
 
  }
