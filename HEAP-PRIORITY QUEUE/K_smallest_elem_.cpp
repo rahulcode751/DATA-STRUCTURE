@@ -1,7 +1,7 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-
+/// code by rahulcode751
 void KSortedArray(int *input, int n,int k){
     priority_queue<int , vector<int> , greater<int> > pq;
 
