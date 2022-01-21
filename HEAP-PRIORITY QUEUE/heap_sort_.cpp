@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+/// code by rahulcode751
 void inplaceHeapSort(int *pq, int n){
    /// Build the heap in input array
    for(int i=1;i<n;i++){  // elem 1 se star kr rhe h kyuki 0yh pehle se hi healp me le rhe h hm
