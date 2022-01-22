@@ -28,7 +28,7 @@ void inorder(Node*root,vector<int>&v)
  Node* make_balanced_bst(int s,int e,vector<Node*> &v){
      if(s>e) return NULL;
      int mid = (s+e)/2;
-     Node* root = v[i];
+     Node* root = v[mid];
      root->left = make_balanced_bst(root,s,mid-1,v);
      root-right = make_balanced_bst(root,mid+1,end,v);
      return root;
