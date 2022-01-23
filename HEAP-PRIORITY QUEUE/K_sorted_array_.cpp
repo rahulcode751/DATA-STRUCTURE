@@ -1,16 +1,16 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-/// code by rahulcode751
-void KSortedArray(int *input, int n,int k){
-    priority_queue<int> pq;
 
-    for(int i = 0; i<k; i++){
+void KSortedArray(int *input, int n,int k){
+    priority_queue<int,vector<int> ,greater<int>> pq;
+
+    for(int i = 0; i<=k; i++){
         pq.push(input[i]);
     }
 
     int s = 0;
-    for(int i=k; i<n; i++){
+    for(int i=k+1; i<n; i++){
         input[s] = pq.top();
         pq.pop();
         s++;
@@ -25,11 +25,11 @@ void KSortedArray(int *input, int n,int k){
 }
 int main(){
 
-   int array[] = {10,12,6,7,9};
-   int k = 2;
-   KSortedArray(array,5,k);
+   int array[] = {6,5,3,2,8,10,9};
+   int k = 3;
+   KSortedArray(array,7,k);
 
-   for(int i = 0; i<5; i++){
+   for(int i = 0; i<7; i++){
       cout<<array[i]<<" ";
    }
 
