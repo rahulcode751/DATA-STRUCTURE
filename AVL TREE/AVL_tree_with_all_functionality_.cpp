@@ -73,14 +73,14 @@ AVL* RR_rotation(AVL* node){  /// RR rotation function
     //edited here
     AVL* node_rc = node->right;
     AVL* node_lc = node_rc->left;
-    
+
 
     node_rc->left = node;
     node->right = node_lc;
 
     /// now modify heights
     node->height = node_height(node);
-//    node_lc->height = node_height(node_lc);   -----no need to update this height
+ //   node_lc->height = node_height(node_lc);   -----no need to update this height
     node_rc->height = node_height(node_rc);
 
     return node_rc;
@@ -183,6 +183,40 @@ void preorder(AVL *root)
         preorder(root->right);
     }
 }
+
+void levelOrder(AVL* root) {
+        if(root==NULL){
+            return;
+        }
+        queue<AVL*> q;
+        q.push(root);
+        q.push(NULL);
+        cout<<root->data<<endl;;
+
+        while(!q.empty()){
+            AVL* f = q.front();
+            q.pop();
+            if(f==NULL){
+                cout<<endl;
+                if(!q.empty()){
+                    q.push(NULL);
+                }
+
+            }else{
+
+                if(f->left){
+                    q.push(f->left);
+                    cout<<f->left->data<<",";
+                }
+                if(f->right){
+                    q.push(f->right);
+                    cout<<f->right->data<<",";
+                }
+            }
+        }
+
+    }
+
 int main(){
  // AVL* root = new AVL(10);
  // root = insert(root,5);
@@ -196,7 +230,8 @@ int main(){
   root=insert(root,19);
   root=insert(root,65);
   root=insert(root,57);
-  preorder(root);
+  levelOrder(root);
+  cout<<endl;
   printTree(root);
 
   return 0;
