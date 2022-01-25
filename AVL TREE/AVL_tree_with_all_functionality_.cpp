@@ -38,7 +38,7 @@ int BalanceFactor(AVL* node){
 
 AVL* LL_rotation(AVL* node){  /// LL rotation function
     AVL* node_lc = node->left;
-    AVL* node_rc = node->right;
+    AVL* node_rc = node_lc->right;  // not node->right
 
     node_lc->right = node;
     node->left = node_rc;
@@ -46,14 +46,14 @@ AVL* LL_rotation(AVL* node){  /// LL rotation function
     /// now modify height
     node->height = node_height(node);
     node_lc->height = node_height(node_lc);
-    node_rc->height = node_height(node_rc);
+//    node_rc->height = node_height(node_rc); ----no need to modify this height
 
     return node_lc;
 }
 
 AVL* LR_rotation(AVL* node){   /// LR rotation function
     AVL* node_lc = node->left;
-    AVL* node_rc = node->right;
+    AVL* node_rc = node_lc->right;  //not node->right
 
     node_lc->right = node_rc->left;
     node->left = node_rc->right;
@@ -70,23 +70,27 @@ AVL* LR_rotation(AVL* node){   /// LR rotation function
 }
 
 AVL* RR_rotation(AVL* node){  /// RR rotation function
-    AVL* node_lc = node->left;
+    //edited here
     AVL* node_rc = node->right;
+    AVL* node_lc = node_rc->left;
+    
 
     node_rc->left = node;
     node->right = node_lc;
 
     /// now modify heights
     node->height = node_height(node);
-    node_lc->height = node_height(node_lc);
+//    node_lc->height = node_height(node_lc);   -----no need to update this height
     node_rc->height = node_height(node_rc);
 
     return node_rc;
+//return NULL;
 }
 
 AVL* RL_rotation(AVL* node){  /// RL rotation function
-    AVL* node_lc = node->left;
+    //edited here
     AVL* node_rc = node->right;
+    AVL* node_lc = node_rc->left;
 
     node_rc->left = node_lc->right;
     node->right = node_lc->left;
@@ -169,14 +173,22 @@ AVL* minDataNode(AVL *root){
     return temp;
 }
 
-
+// function to print the preorder of constructed AVL tree
+void preorder(AVL *root)
+{
+    if(root != NULL)
+    {
+        cout << root->data << " ";
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
 int main(){
  // AVL* root = new AVL(10);
  // root = insert(root,5);
  // root = insert(root,2);
 
   AVL* root = new AVL(10);
-  root=insert(root,10);
   root=insert(root,90);
   root=insert(root,50);
   root=insert(root,70);
@@ -184,6 +196,7 @@ int main(){
   root=insert(root,19);
   root=insert(root,65);
   root=insert(root,57);
+  preorder(root);
   printTree(root);
 
   return 0;
