@@ -233,8 +233,7 @@ AVL *deleteData(AVL *node, int data)
         }
         else
         {
-            AVL *minNode = node->right; /* yha hm right ke minimum se replace krenge node ko ,left ke max se nhi kr rhe vo tum krke dekhna .
-			   right ka minimum right ke lef me milta h */
+            AVL *minNode = node->right; 
             while (minNode->left != NULL)
             {
                 minNode = minNode->left;
