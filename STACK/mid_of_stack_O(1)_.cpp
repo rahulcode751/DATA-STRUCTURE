@@ -112,7 +112,7 @@ int findMiddle(myStack* ms)
 
 }
 // Function for deleting middle of the stack
-int deletemiddle(myStack* ms) // IMPROVED BY Sohaib Ayub
+int deletemiddle(myStack* ms) 
 	{
 		int temp=ms->mid->data;
 		ms->mid->prev->next=ms->mid->next;
