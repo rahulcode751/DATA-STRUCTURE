@@ -1,14 +1,9 @@
 
 #include <bits/stdc++.h>
-
 using namespace std;
-
 class Queue {
     // Two inbuilt queues
     stack<int> q1, q2;
-
-    // To maintain current number of
-    // elements
     int curr_size;
 
 public:
@@ -20,21 +15,12 @@ public:
     void push(int x)
     {
         curr_size++;
-
-        // Push x first in empty q2
         q2.push(x);
 
-        // Push all the remaining
-        // elements in q1 to q2.
         while (!q1.empty()) {
             q2.push(q1.top());
             q1.pop();
         }
-
-        // swap the names of two queues
-       /* stack<int> q = q1;
-        q1 = q2;
-        q2 = q; */
         while(!q2.empty()){
             q1.push(q2.top());
             q2.pop();
