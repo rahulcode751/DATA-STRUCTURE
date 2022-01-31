@@ -1,10 +1,8 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 
 class Node {
    public:
-     Node *prev;
      int data;
      Node *next;
 
@@ -12,6 +10,9 @@ class Node {
        this->data = data;
        next = NULL;
      }
+    ~Node(){
+       delete next;
+    }
 };
 
 Node *takeinput(){
@@ -73,6 +74,88 @@ void insert_end(Node* &End,int val){
     }
 }
 
+Node* insertAtithPos(Node *End, int i, int data){
+      if(i<0){
+        return End;
+      }
+      if(i==0){
+        insert_beg(End,data);
+        return End;
+      }
+      Node * copyHead = End->next;
+      int count = 1;
+      while(count <= i-1){
+        copyHead = copyHead->next;
+        count++;
+      }
+      if(copyHead != End->next){
+        Node *n = new Node(data);
+        Node *temp = copyHead->next;
+        copyHead->next = n;
+        n->next = temp;
+        return End->next;
+      }
+      return End->next;
+}
+
+Node* delete_beg(Node* &End){
+    if(End == NULL){
+        return End;
+    }
+    Node* temp = End;
+    Node* deli = temp->next;
+    temp->next = temp->next->next;
+    deli->next = NULL;
+    delete deli;
+    End = temp;
+    return End;
+}
+
+Node* delete_end(Node* &End){
+    if(End == NULL){
+        return End;
+    }
+    Node* temp = End->next;
+    while(temp->next != End){
+        temp = temp->next;
+    }
+    Node* deli = temp->next;
+    temp->next = temp->next->next;
+    deli->next = NULL;
+    delete deli;
+    End = temp;
+    return End;
+}
+
+Node* deleteithNode(Node* End, int i){
+   if(i<0){
+      return End;
+   }
+   if(i==0){
+    delete_beg(End);
+    return End;
+   }
+
+   Node* curr = End->next;
+   int count = 1;
+   while(count < i-1){
+    curr = curr->next;
+    count++;
+   }
+   if(curr->next == End){
+    End = delete_end(End);
+    return End;
+   }
+   else if(curr != End->next){
+    Node* deli = curr->next;
+    curr->next = curr->next->next;
+    deli->next = NULL;
+    delete deli;
+    return End;
+   }
+   return End;
+}
+
 void display(Node *End){
     if(End == NULL){
         cout<<"Empty"<<endl;
@@ -97,7 +180,22 @@ int main(){
 
     insert_beg(End,10);
     display(End);
+    
     insert_end(End,11);
     display(End);
+    
+    End = delete_end(End);
+    display(End);
+    display(End);
+
+    End = delete_beg(End);
+    display(End);
+
+    End = insertAtithPos(End,2,99);
+    display(End);  
+    
+    End = deleteithNode(End,3);
+    display(End);
+
     return 0;
 }
