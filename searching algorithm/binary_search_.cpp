@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-// itrative binary search
+/// itrative binary search
 
 int BinarySearch(int a[],int n,int key){
          int s = 0, e = n-1;
