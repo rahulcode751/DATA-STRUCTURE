@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-/// code by rahulcode751
+/// code by rahulcode751  ///
 
 class AVL
 {
