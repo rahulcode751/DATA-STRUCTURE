@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-/// Code by rahulcode751  
+/// Code by rahulcode751  ///
 
 class AVL
 {
@@ -17,7 +17,6 @@ public:
         right = NULL;
         this->height = 1;
     }
-
     ~AVL()
     {
         delete left;
@@ -53,7 +52,7 @@ AVL *LL_rotation(AVL *node)
     node->height = node_height(node);
     node_lc->height = node_height(node_lc);
     //    node_rc->height = node_height(node_rc); ----no need to modify this height
-
+    
     return node_lc;
 }
 
@@ -120,7 +119,6 @@ void printTree(AVL *root)
     { /// base case
         return;
     }
-
     cout << root->data << ": ";
     if (root->left != NULL)
     {
@@ -132,7 +130,6 @@ void printTree(AVL *root)
         cout << "R" << root->right->data << ",";
     }
     cout << endl;
-
     printTree(root->left);
     printTree(root->right);
 }
