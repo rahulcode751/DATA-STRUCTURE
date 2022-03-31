@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 /// Code by rahulcode751 
+/// It is a height balanced tree. Use only when you have to insert less number of nodes,Otherwise it is very complicated Use RBT red black tree for more number of nodes
 class AVL
 {
 public:
