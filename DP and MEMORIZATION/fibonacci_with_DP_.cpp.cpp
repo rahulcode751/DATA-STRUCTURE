@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-/// Recursion  o(2^n)
+// Recursion  o(2^n)
 int fib(int n) {
 	if (n == 0 || n == 1) {
 		return n;
